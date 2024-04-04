@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using Game.Core.Configurations;
 using Game.Core.Levels;
 using Game.Data.Models;
 using Game.Modules.UIManager;
