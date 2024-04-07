@@ -1,4 +1,5 @@
 using Game.Core.Levels;
+using Game.Factories;
 using Game.PlayerLoop;
 using Game.Systems.PlayerInput;
 using UnityEngine;
@@ -21,6 +22,8 @@ namespace Game.Installers
             
             Container.Bind<IPlayerLoopFacade>().To<PlayerLoopFacade>().AsSingle();
             Container.BindInterfacesTo<GameInput>().AsSingle();
+
+            Container.BindInterfacesAndSelfTo<BallFactory>().AsSingle();
         }
     }
 }

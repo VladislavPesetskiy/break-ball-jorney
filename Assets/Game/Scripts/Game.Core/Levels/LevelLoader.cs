@@ -42,7 +42,7 @@ namespace Game.Core.Levels
             {
                 CurrentLevel = defaultLevel;
                 CurrentLevel.gameObject.SetActive(true);
-                ShowLevel(levelData);
+                ShowLevel(levelData).Forget();
                 onLoaded?.Invoke(CurrentLevel);
             }
         }
@@ -64,9 +64,11 @@ namespace Game.Core.Levels
             CurrentLevel = null;
         }
 
-        private void ShowLevel(LevelData levelData)
+        private async UniTaskVoid ShowLevel(LevelData levelData)
         {
             CurrentLevel.Initialize(levelData.LevelSettings);
+            
+            await UniTask.NextFrame();
             CurrentLevel.Show();
         }
 
